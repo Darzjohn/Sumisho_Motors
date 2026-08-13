@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sumisho Motor · Honda · Suzuki · Yamaha Pricing</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- external CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container" id="app">
+    <!-- header -->
+    <div class="header">
+      <h1><i class="fas fa-store-alt"></i> Sumisho Motors</h1>
+      <div class="brand-switch">
+        <button class="brand-btn active" data-brand="honda"><i class="fas fa-motorcycle"></i> Honda</button>
+        <button class="brand-btn" data-brand="suzuki"><i class="fas fa-motorcycle"></i> Suzuki</button>
+        <button class="brand-btn" data-brand="yamaha"><i class="fas fa-motorcycle"></i> Yamaha</button>
+      </div>
+      <div class="header-actions">
+        <button class="add-btn" id="addUnitBtn"><i class="fas fa-plus-circle"></i> Add Unit</button>
+        <span class="badge"><i class="fas fa-calendar-alt"></i> <span id="dateDisplay">Aug 03, 2026</span></span>
+      </div>
+    </div>
+
+    <!-- search & filters -->
+    <div class="search-section">
+      <div class="search-wrapper">
+        <i class="fas fa-search"></i>
+        <input type="text" id="searchInput" placeholder="Search model, code, or SRP..." autocomplete="off">
+      </div>
+      <div class="filter-group">
+        <label><i class="fas fa-tag"></i> Term</label>
+        <select id="termFilter">
+          <option value="all">All terms</option>
+          <option value="12">12 mo.</option>
+          <option value="18">18 mo.</option>
+          <option value="24">24 mo.</option>
+          <option value="30">30 mo.</option>
+          <option value="36">36 mo.</option>
+          <option value="48">48 mo.</option>
+        </select>
+        <button class="reset-btn" id="resetBtn"><i class="fas fa-undo-alt"></i> Reset</button>
+      </div>
+    </div>
+
+    <!-- table -->
+    <div class="table-responsive">
+      <table id="priceTable">
+        <thead>
+          <tr>
+            <th style="text-align:left; padding-left:1.2rem;">Model</th>
+            <th>Code</th>
+            <th>SRP (₱)</th>
+            <th>D/P (₱)</th>
+            <th>12</th>
+            <th>18</th>
+            <th>24</th>
+            <th>30</th>
+            <th>36</th>
+            <th>48</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+          <!-- rows injected by JS -->
+        </tbody>
+      </table>
+    </div>
+    <div class="footer-note">
+      <i class="fas fa-store-alt"></i> Rizal Autozone · Cebu · <span id="brandFooter">Honda</span> Pricing
+      <span style="margin-left: auto; font-size: 0.75rem; color: #8aa9bd;">Total: <span id="rowCount">0</span> units</span>
+    </div>
+  </div>
+
+  <!-- Modal for adding new unit -->
+  <div class="modal-overlay" id="addModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3><i class="fas fa-plus-circle"></i> Add New Motorcycle Unit</h3>
+        <button class="modal-close" id="modalCloseBtn">&times;</button>
+      </div>
+      <form id="addForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="newModel">Model Name *</label>
+            <input type="text" id="newModel" placeholder="e.g. ADV160" required>
+          </div>
+          <div class="form-group">
+            <label for="newCode">Code</label>
+            <input type="text" id="newCode" placeholder="e.g. ADV160AP">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="newSRP">SRP (₱) *</label>
+            <input type="number" id="newSRP" placeholder="171400" required>
+          </div>
+          <div class="form-group">
+            <label for="newDP">Down Payment (₱) *</label>
+            <input type="number" id="newDP" placeholder="12900" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="newM12">12 mo.</label>
+            <input type="text" id="newM12" placeholder="18056 or N/A">
+          </div>
+          <div class="form-group">
+            <label for="newM18">18 mo.</label>
+            <input type="text" id="newM18" placeholder="13368 or N/A">
+          </div>
+          <div class="form-group">
+            <label for="newM24">24 mo.</label>
+            <input type="text" id="newM24" placeholder="11016 or N/A">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="newM30">30 mo.</label>
+            <input type="text" id="newM30" placeholder="9663 or N/A">
+          </div>
+          <div class="form-group">
+            <label for="newM36">36 mo.</label>
+            <input type="text" id="newM36" placeholder="8761 or N/A">
+          </div>
+          <div class="form-group">
+            <label for="newM48">48 mo.</label>
+            <input type="text" id="newM48" placeholder="N/A">
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn-cancel" id="modalCancelBtn">Cancel</button>
+          <button type="submit" class="btn-submit"><i class="fas fa-save"></i> Add Unit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- external JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
